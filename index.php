@@ -52,13 +52,13 @@ if ($conn->connect_error) {
         <div class="bodySlider">
             <div class="slideshow-container">
                 <div class="mySlides fade">
-                    <img class="imgSlider" src="/Projet_PHP/images/slider/jpg/slider1.jpg" style="width:100%">
+                    <img class="imgSlider" src="/Projet_PHP/images/slider/jpg/slider1.jpg">
                 </div>
                 <div class="mySlides fade">
-                    <img class="imgSlider" src="/Projet_PHP/images/slider/jpg/slider2.jpg" style="width:100%">
+                    <img class="imgSlider" src="/Projet_PHP/images/slider/jpg/slider2.jpg">
                 </div>
                 <div class="mySlides fade">
-                    <img class="imgSlider" src="/Projet_PHP/images/slider/jpg/slider3.jpg" style="width:100%">
+                    <img class="imgSlider" src="/Projet_PHP/images/slider/jpg/slider3.jpg">
                 </div>
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -67,7 +67,7 @@ if ($conn->connect_error) {
 
         <!-- NOS ENGAGEMENTS -->
         <section class="engagements">
-            <h2>✨ Nos engagements ✨</h2>
+            <h2 class="section-title">✨ Nos engagements ✨</h2>
             <div class="engagements-container">
                 <div class="engagement">
                     <img src="/Projet_PHP/images/icons/quality.svg" alt="Qualité">
@@ -89,7 +89,7 @@ if ($conn->connect_error) {
 
         <!-- CATÉGORIES -->
         <section class="categories">
-            <h2>Nos Collections</h2>
+            <h2 class="section-title">Nos Collections</h2>
             <div class="categories-container">
                 <div class="categorie">
                     <img src="/Projet_PHP/images/categories/bague.jpg" alt="Bagues">
@@ -108,7 +108,7 @@ if ($conn->connect_error) {
 
         <!-- AVIS CLIENTS -->
         <section class="avis">
-            <h2>💬 Nos clients en parlent 💬</h2>
+            <h2 class="section-title">💬 Nos clients en parlent 💬</h2>
             <div class="avis-container">
                 <div class="avis-item">
                     <p>⭐⭐⭐⭐⭐ "Magnifiques bijoux, livraison rapide et service client au top !"</p>
@@ -131,56 +131,20 @@ if ($conn->connect_error) {
         </div>
 
         <footer class="footer-distributed">
-			<div class="footer-left">
-			
-						 <h3>Éclat <span> D'or</span></h3>
-
-			<p class="footer-links">
-				<a href="http://localhost/projet_PHP/index.php">Acceuil</a>
-				.
-				<a href="http://localhost/projet_PHP/html/products.html">Produits</a>
-				.
-				<a href="http://localhost/projet_PHP/html/about.html">Qui sommes-nous ? </a>
-				.
-				<a href="http://localhost/projet_PHP/html/contacts.html">Contact</a>
-			</p>
-
-			<p class="footer-company-name">Copyrights @2025</p>
-
-			<div class="footer-icons">
-
-			<a href="https://facebook.com" target="_blank"><img class="imgHeader" src="../images/icons/facebook_icon.svg"></a>
-				<a href="https://twitter.com" target="_blank"><img class="imgHeader" src="../images/icons/twitter_icon.svg"></a>
-				<a href="https://instagram.com" target="_blank"><img class="imgHeader" src="../images/icons/instagram_icon.svg"></a>
-				<a href="https://linkedin.com" target="_blank"><img class="imgHeader" src="../images/icons/linkedin_icon.svg"></a>
-
-
-			</div>
-
-		</div>
-
-		<div class="footer-right">
-
-			<p>Contact</p>
-
-			<form action="#" method="post">
-
-				<input type="text" name="email" placeholder="Email">
-				<textarea name="message" placeholder="Message"></textarea>
-				<button>envoyer</button>
-
-			</form>
-
-		</div>
-
-	</footer>
-	</div>
-	
-	<div class="colonnes colonne3"></div>
+            <div class="footer-left">
+                <h3>Éclat <span>D'or</span></h3>
+                <p class="footer-links">
+                    <a href="/Projet_PHP/index.php">Accueil</a> ·
+                    <a href="/Projet_PHP/html/products.html">Produits</a> ·
+                    <a href="/Projet_PHP/html/about.html">Qui sommes-nous ?</a> ·
+                    <a href="/Projet_PHP/html/contacts.html">Contact</a>
+                </p>
+            </div>
+        </footer>
+    </div>
 </div>
 
 <script>
-// JavaScript pour le slider
 var slideIndex = 1;
 showSlides(slideIndex);
 

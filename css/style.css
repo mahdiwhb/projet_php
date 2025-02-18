@@ -1,352 +1,158 @@
-	body{
-		background-image: url("../images/bg.jpg");
-	}
-	
-	.imgHeader {
-			width:25px;
-			height:25px;
-			margin-right: 5px;
-			border-radius: 5px 5px 5px 5px;
-	}
-	
-.divHeader{
-			margin-bottom: 30px;
-	}
-	
-	ul {
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-		overflow: hidden;
-		background-color: transparent;
-	}
-	
-	li {
-		float: left;
-	}
-	
-	li a {
-		display: block;
-		color: #4bbce7;
-		text-align: center;
-		padding: 14px 16px;
-		text-decoration: none;
-	}
-	
-	li a:hover {
-		color:white;
-		background-color: #4bbce7;
-	}
-	
-	.active {
-		color: black;
-		background-color: white;
-	}
-	
-	.social_icon {
-		display: flex;
-		float: left;
-		margin-left: auto;
-		margin-right: auto;
-	}
 
-	.header_right {
-		height: 40px;
-		float: right;
-		display: flex;
-		margin-left: auto;
-		margin-right: auto;
-	}
+body {
+	background-image: url("../images/bg.jpg");
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
 
-	.btn {
-		display: flex;
-		float: left;
-		margin-left: 2px;
-		padding: 5px 5px;
-		text-align: center;
-		color: #111;
-		text-decoration: none;
-		background-color: transparent;
-		color: #4bbce7;
-	}
+.container {
+	width: 80%;
+	margin: auto;
+	text-align: center;
+}
 
-	.btn:hover {
-		background-color: white;
-		color: black;
-	}
-	
-	.header {
-		width: 100%;
-		float: right;
-		display: table;
-	}
+/* --------- HEADER --------- */
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px 30px;
+}
 
-	.logo {
-		width: 10%x;
-		height: 25px;
-		float: left;
-		display: flex;
-		margin-left: auto;
-		margin-right: auto;
-	}
+.logo img {
+	width: 120px;
+	height: auto;
+}
 
-	.imgLogo {
-		width: 120px;
-		height: 60px;
-	}
+.navbar ul {
+	list-style: none;
+	display: flex;
+	gap: 20px;
+	padding: 0;
+}
 
-	.navbar ul {
-		float: right;
-		display: flex;
-		margin-left: auto;
-		margin-right: auto;
-	}
-	
-	
-    .Conteneur .colonne1{	
-		width: 15%;	
+.navbar ul li {
+	display: inline-block;
+}
 
-	}
+.navbar ul li a {
+	text-decoration: none;
+	color: #4bbce7;
+	padding: 10px 15px;
+	border-radius: 5px;
+	transition: 0.3s;
+}
 
- 	.Conteneur .colonne2{
-		align-items:top;
-		width: 70%;
-	}
- 	
-	.Conteneur .colonne3{
-		width: 15%;
-	}
+.navbar ul li a:hover, .navbar ul li.active a {
+	background-color: #4bbce7;
+	color: white;
+}
 
-	.Conteneur {
-      display: flex;
-      align-items: center; /
-      width: 100%;
-      height: auto;
-      }
-	  
-	  
-	 
-	/* STYLE SLIDE*/
+/* --------- SLIDER --------- */
+.slideshow-container {
+	max-width: 100%;
+	position: relative;
+	margin: auto;
+}
 
-	* {box-sizing: border-box}
-	.bodySlider {font-family: Verdana, sans-serif; margin:0}
-	.mySlides {display: none;
-				width: 100%;
-				margin-top:120px;
-			}
-	.imgSlider {vertical-align: middle;
-				width: 100%;
-				height: 350px;
-				border-radius:5px 5px 5px 5px;
-			}
+.imgSlider {
+	width: 100%;
+	height: auto;
+	border-radius: 8px;
+}
 
-	/* Slideshow container */
-	.slideshow-container {
-	  max-width: 100%;
-	  height: 350px;
-	  position: relative;
-	  margin: auto;
-	}
+/* --------- ENGAGEMENTS --------- */
+.engagements {
+	padding: 50px 0;
+}
 
-	/* Next & previous buttons */
-	.prev, .next {
-	  cursor: pointer;
-	  position: absolute;
-	  top: 50%;
-	  width: auto;
-	  padding-left: 16px;
-	  padding-right:16px;
-	   padding-top:10px;
-	  padding-bottom:10px;
-	  margin-top: -22px;
-	  color: gray;
-	  font-weight: bold;
-	  font-size: 18px;
-	  transition: 0.6s ease;
-	  border-radius: 24px 24px 24px 24px;
-	  user-select: none;
-	}
+.engagements-container {
+	display: flex;
+	justify-content: center;
+	gap: 50px;
+	text-align: center;
+}
 
-	/* Position the "next button" to the right */
-	.next {
-	  right: 0;
-	  border-radius: 24px 24px 24px 24px;
-	}
+.engagement img {
+	width: 50px;
+	height: auto;
+}
 
-	/* On hover, add a black background color with a little bit see-through */
-	.prev:hover, .next:hover {
-	  background-color:gray;
-	  color:white;
-	  padding-top:10px;
-	  padding-bottom:10px;
-	}
+/* --------- CATÉGORIES --------- */
+.categories {
+	padding: 50px 0;
+}
 
-	/* Caption text */
-	.text {
-	  color: black;
-	  font-size: 15px;
-	  padding: 8px 12px;
-	  /*position: absolute;*/
-	  bottom: 8px;
-	  width: 100%;
-	  text-align: center;
-	}
+.categories-container {
+	display: flex;
+	justify-content: center;
+	gap: 30px;
+}
 
-	/* Number text (1/3 etc)  color: #f2f2f2; */
-	.numbertext {
-	  color: gray;
-	  font-size: 12px;
-	  padding: 8px 12px;
-	  position: absolute;
-	  top: 0;
-	}
+.categorie {
+	width: 250px;
+}
 
-	/* The dots/bullets/indicators */
-	.dot {
-	  cursor: pointer;
-	  height: 15px;
-	  width: 15px;
-	  margin: 0 2px;
-	  background-color: #bbb;
-	  border-radius: 50%;
-	  display: inline-block;
-	  transition: background-color 0.6s ease;
-	}
+.categorie img {
+	width: 100%;
+	height: auto;
+	border-radius: 8px;
+}
 
-	.active, .dot:hover {
-	  background-color: #717171;
-	}
+/* --------- AVIS CLIENTS --------- */
+.avis {
+	background-color: #f9f9f9;
+	padding: 50px 0;
+}
 
-	/* Fading animation */
-	.fade {
-	  -webkit-animation-name: fade;
-	  -webkit-animation-duration: 1.5s;
-	  animation-name: fade;
-	  animation-duration: 1.5s;
-	}
+.avis-container {
+	display: flex;
+	justify-content: center;
+	gap: 30px;
+}
 
-	@-webkit-keyframes fade {
-	  from {opacity: .4} 
-	  to {opacity: 1}
-	}
+.avis-item {
+	background: white;
+	padding: 20px;
+	width: 300px;
+	border-radius: 8px;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-	@keyframes fade {
-	  from {opacity: .4} 
-	  to {opacity: 1}
-	}
+/* --------- BOUTON COLLECTION --------- */
+.btn-center {
+	text-align: center;
+	margin-top: 30px;
+}
 
-	/* On smaller screens, decrease text size */
-	@media only screen and (max-width: 300px) {
-	  .prev, .next,.text {font-size: 11px}
-	}
+.btn-big {
+	display: inline-block;
+	padding: 15px 30px;
+	font-size: 18px;
+	font-weight: bold;
+	color: white;
+	background-color: #4bbce7;
+	border-radius: 8px;
+	text-decoration: none;
+	transition: 0.3s ease;
+}
 
-	/*  STYLE CARTES DE PRIX */
-	.myOffersText {
-		font-size:50px;
-		font-family:cursive;
-		margin-top:30px;
-		text-align:center;
-		
-	}
-		 
-	.myOffersText span{
-		 font-family: arial;
+.btn-big:hover {
+	background-color: #3797c0;
+}
 
-	}
+/* --------- FOOTER --------- */
+.footer-distributed {
+	background: #333;
+	color: white;
+	text-align: center;
+	padding: 30px 0;
+}
 
-
-
-	.row {display: flex;
-				width: 100%;
-				height:500px;
-	}
-
-	.column {
-		
-		width:32%;
-		margin-right:1%;
-		margin-left:1%;
-		height:400px;
-		
-	}
-
-	.rowCarde {
-		display: flex;
-		width: 100%;
-		height:200px;
-	}
-
-	.divImgProduct{
-		background-image: url("../images/bgImg.jpg");
-		border-radius:5px 5px 0 0;
-	}
-	.imgProduct {
-		height:350px;
-		width:100%;
-	}
-
-	.priceProduct {
-		display: block;
-		width: 100%;
-		height:100px;
-		background-image: url("../images/bg.jpg");
-		
-	}
-
-	label{
-		/*background-color:#f3f9e9;*/
-		width: 100%;
-		height:50px;
-		display: inline-table;
-		font-weight: bold;
-		font: bold 18px sans-serif;
-		text-align:center;
-		text-decoration:none;
-		padding-top:10px;
-		padding-bottom:5px;
-
-	}
-
-	.selectProduct {
-		display: block;
-		width: 100%;
-		height:50px;
-		background-color: #a2dede;
-		margin-left: 0px;
-		
-		/*text-decoration:underline;*/
-		text-decoration:none;
-		font-weight: bold;
-		font: bold 18px sans-serif;
-		transition: 0.6s ease;
-		border-radius: 0 0 5px 5px;
-		user-select: none;
-	}
-
-
-		.selectProduct:hover {
-		background-color:white ;
-		color: #4bbce7;
-		
-	}
-	  
-
-	  .paragraphe {
-		      text-align: center;
-			  
-	  }
-	  
-	  
-	  .paragraphe .par{
-		   font-family: cursive;
-	  }
-	
-	  
-	  
-	  
-	strike {
-		color:red;
-	}
-	  
-	  
-	
+.footer-links a {
+	color: #4bbce7;
+	text-decoration: none;
+	margin: 0 10px;
+}
