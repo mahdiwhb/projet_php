@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+ <html>
+	<head>
+	<meta charset="utf-8">
+		<title>💎 Éclat d'Or</title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css"> 
+	<link rel="stylesheet" type="text/css" href="../css/footer.css">
+	<link rel="icon" type="images/png" href="../images/logo.png">
+	</head>
+<body>
+
+	<?php
+            $servername = 'localhost';
+            $username = 'tp_web';
+            $password = '';
+            
+            //On établit la connexion
+            $conn = mysqli_connect($servername, $username, $password);
+            
+            //On vérifie la connexion
+            if(!$conn){
+                die('Erreur : ' .mysqli_connect_error());
+            }
+            //echo "Connexion réussie pour $username" ;
+    ?>
+		
+	<div class="Conteneur">
+		<div class="colonne1"></div>
+		<div class="colonne2">
+			<div class="" style="width: 100%;">
+				<div class="container">
+					<div class="">
+						<div class="header_right">
+						
+							<div class="login_register_btn">
+								<a href="#" class="btn" onclick="window.location='http://localhost/projet_PHP/html/login.html'">Login</a>     
+								<a href="#" class="btn" onclick="window.location='http://localhost/projet_PHP/html/register.html'">Register</a>    
+							</div>
+						</div>
+			
+					</div>
+					<div class="header">
+						<div class="container">
+							<div class="navbar">
+								<ul>
+									<li class="active"><a href="http://localhost/projet_PHP/index.php">Accueil</a></li>
+									<li><a href="http://localhost/projet_PHP/html/products.html">Produits</a></li>   
+									<li><a href="http://localhost/projet_PHP/html/offres.html">Offres</a></li>
+									<li><a href="http://localhost/projet_PHP/html/about.html">Qui sommes-nous ? </a></li>
+									<li><a href="http://localhost/projet_PHP/html/contacts.html">Contacts</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		
+			
+				<!-- text -->
+			<div class="myOffersText">
+	
+			<h3>offres</h3>
+			</div>
+			
+			<div class=paragraphe>
+			 <div class=par>
+				<h2><em>Profitez de nos <br> PROMOS JUSQU'A 30% De RÉDUCTION </br> </h2></em>
+			 </div>
+			</div>
+				
+			
+			<div class="row">
+
+				<div class="column">
+					<div class="divImgProduct"> <img class="imgProduct" src="../images/promo/boucle.jpg"> </div>
+					<div class="priceProduct">
+						<label for="html">Boucles D'oreille cartier </label>
+						<label for="html"><strike>4 000 €</strike><br>3 220 €</br></label>
+					</div>
+					<div class="selectProduct"> <a href="#" class="btn selectProduct">Ajouter au panier</a></div>
+				</div>
+				
+				<div class="column"> 
+					<div class="divImgProduct"> <div class=""> <img class="imgProduct" src="../images/promo/colier.jpg"> </div></div>
+					<div class="priceProduct">
+						<label for="html">Colier Van cleef</label><br>
+						<label for="html"><strike>  3 050 €</strike> <br>2 700 €</br></label>
+					</div>
+					<div class="selectProduct"> <a href="#" class="btn selectProduct">Ajouter au panier</a></div>
+				</div>
+				
+				<div class="column"> 
+					<div class="divImgProduct"> <div class=""> <img class="imgProduct" src="../images/promo/bracelet lv.jpg"> </div></div>
+					<div class="priceProduct">
+						<label for="html">Bracelet Louis Vuitton</label><br>
+						<label for="html"><strike>2 500 €</strike><br>1 800 €</br></label><br>
+					</div>
+					<div class="selectProduct"> <a href="#" class="btn selectProduct">Ajouter au panier</a></div>
+				</div>
+			
+			</div>
+		<!-- FIN CARTE DE PRIX -->
+		  
+		  
+		<footer class="footer-distributed">
+			<div class="footer-left">
+			
+						 <h3>Éclat <span> D'or</span></h3>
+
+			<p class="footer-links">
+				<a href="http://localhost/projet_PHP/index.php">Acceuil</a>
+				.
+				<a href="http://localhost/projet_PHP/html/products.html">Produits</a>
+				.
+				<a href="http://localhost/projet_PHP/html/about.html">Qui sommes-nous ? </a>
+				.
+				<a href="http://localhost/projet_PHP/html/contacts.html">Contact</a>
+			</p>
+
+			<p class="footer-company-name">Copyrights @2025</p>
+
+			<div class="footer-icons">
+
+				<a href="https://facebook.com" target="_blank"><img class="imgHeader" src="../images/icons/facebook_icon.svg"></a>
+				<a href="https://twitter.com" target="_blank"><img class="imgHeader" src="../images/icons/twitter_icon.svg"></a>
+				<a href="https://instagram.com" target="_blank"><img class="imgHeader" src="../images/icons/instagram_icon.svg"></a>
+				<a href="https://linkedin.com" target="_blank"><img class="imgHeader" src="../images/icons/linkedin_icon.svg"></a>
+
+			</div>
+
+		</div>
+
+		<div class="footer-right">
+
+			<p>Contact</p>
+
+			<form action="#" method="post">
+
+				<input type="text" name="email" placeholder="Email">
+				<textarea name="message" placeholder="Message"></textarea>
+				<button>envoyer</button>
+
+			</form>
+
+		</div>
+
+	</footer>
+	</div>
+	
+	<div class="colonnes colonne3"></div>
+</div>

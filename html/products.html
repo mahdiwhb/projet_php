@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>💎 Éclat d'Or</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css"> 
+<link rel="stylesheet" type="text/css" href="../css/footer.css">
+<link rel="stylesheet" type="text/css" href="../css/products.css">
+<link rel="icon" type="images/png" href="../images/logo.png">
+</head>
+<body>
+
+<?php
+$servername = 'localhost';
+$username = 'tp_web';
+$password = 'tp_web';
+
+// Connexion
+$conn = mysqli_connect($servername, $username, $password);
+
+// Vérification de la connexion
+if(!$conn){
+    die('Erreur : ' .mysqli_connect_error());
+}
+?>
+
+<div class="Conteneur">
+    <div class="colonne1"></div>
+    <div class="colonne2">
+        <div class="divHeader" style="width: 100%;">
+            <div class="container">
+                <div class="">
+                   
+										<div class="header_right">
+									</div>
+									<div class="header">
+										<div class="container">
+											<div class="navbar">
+												<ul>
+													<li class="active"><a href="http://localhost/projet_PHP/index.php">Accueil</a></li>
+													<li><a href="http://localhost/projet_PHP/html/products.html">Produits</a></li>   
+													<li><a href="http://localhost/projet_PHP/html/offres.html">Offres</a></li>
+													<li><a href="http://localhost/projet_PHP/html/about.html">Qui sommes-nous ? </a></li>
+													<li><a href="http://localhost/projet_PHP/html/contacts.html">Contacts</a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+                    <div class="header_right">
+                        <div class="login_register_btn">
+                            <a href="#" class="btn" onclick="window.location='http://localhost/projet_PHP/html/login.html'">Connexion</a>     
+                            <a href="#" class="btn" onclick="window.location='http://localhost/projet_PHP/html/register.html'">S'inscrire</a>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="text">
+        <center>
+            <h6>Notre Collection</h6>
+        </center>
+    </div>
+
+    <div class="paragraphe">
+        <h2><em>Découvrez l’élégance intemporelle de la joaillerie française avec notre collection inspirée des grandes maisons de luxe.</em></h2>
+    </div>
+
+    <!-- Bracelets Classiques -->
+    <div class="titre">
+        <center>
+            <h4>Bracelets Classiques</h4>
+        </center>
+    </div>
+
+    <section class="produits">
+        <section class="partie1">
+            <div class="column col1">
+                <div class="card">
+                    <div class="photos">
+                        <img src="../images/products/bracelets-cartier.jpg">
+                    </div>
+                    <h3>Bracelet Trinity</h3>
+                    <p>2500 €</p>
+                    <div class="add">
+                        <button>Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column col2">
+                <div class="card">
+                    <div class="photos">
+                        <img src="../images/products/bracelet love.jpg">
+                    </div>
+                    <h3>Bracelet Love</h3>
+                    <p>4200 €</p>
+                    <div class="add">
+                        <button>Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column col3">
+                <div class="card">
+                    <div class="photos">
+                        <img src="../images/products/juste un clou.jpg">
+                    </div>
+                    <h3>Bracelet Juste Un Clou</h3>
+                    <p>3200 €</p>
+                    <div class="add">
+                        <button>Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Boucles d’oreilles -->
+    <div class="titre">
+        <center>
+            <h4>Boucles d'Oreilles Raffinées</h4>
+        </center>
+    </div>
+
+    <section class="produits">
+        <section class="partie1">
+            <div class="column col1">
+                <div class="card">
+                    <div class="photos">
+                        <img src="../images/products/perle d or.jpeg">
+                    </div>
+                    <h3>BO Perles d’Or</h3>
+                    <p>1900 €</p>
+                    <div class="add">
+                        <button>Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column col2">
+                <div class="card">
+                    <div class="photos">
+                        <img src="../images/products/alhembra.jpg">
+                    </div>
+                    <h3>BO Alhambra</h3>
+                    <p>2900 €</p>
+                    <div class="add">
+                        <button>Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column col3">
+                <div class="card">
+                    <div class="photos">
+                        <img src="../images/products/josephine.jpg">
+                    </div>
+                    <h3>BO Joséphine</h3>
+                    <p>3100 €</p>
+                    <div class="add">
+                        <button>Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Bagues -->
+    <div class="titre">
+        <center>
+            <h4>Bagues Iconiques</h4>
+        </center>
+    </div>
+
+    <section class="produits">
+        <section class="partie1">
+            <div class="column col1">
+                <div class="card">
+                    <div class="photos">
+                        <img src="../images/products/bague solitaire.jpg">
+                    </div>
+                    <h3>Bague Solitaire</h3>
+                    <p>5900 €</p>
+                    <div class="add">
+                        <button>Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column col2">
+                <div class="card">
+                    <div class="photos">
+                        <img src="../images/products/emauraude.png">
+                    </div>
+                    <h3>Bague Émeraude</h3>
+                    <p>7200 €</p>
+                    <div class="add">
+                        <button>Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column col3">
+                <div class="card">
+                    <div class="photos">
+                        <img src="../images/products/royal.png">
+                    </div>
+                    <h3>Bague Royale</h3>
+                    <p>8500 €</p>
+                    <div class="add">
+                        <button>Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer-distributed">
+        <div class="footer-left">
+        
+                     <h3>Éclat <span> D'or</span></h3>
+
+        <p class="footer-links">
+            <a href="http://localhost/projet_PHP/index.php">Acceuil</a>
+            .
+            <a href="http://localhost/projet_PHP/html/products.html">Produits</a>
+            .
+            <a href="http://localhost/projet_PHP/html/about.html">Qui sommes-nous ? </a>
+            .
+            <a href="http://localhost/projet_PHP/html/contacts.html">Contact</a>
+        </p>
+
+        <p class="footer-company-name">Copyrights @2025</p>
+
+        <div class="footer-icons">
+
+            <a href="https://facebook.com" target="_blank"><img class="imgHeader" src="../images/icons/facebook_icon.svg"></a>
+            <a href="https://twitter.com" target="_blank"><img class="imgHeader" src="../images/icons/twitter_icon.svg"></a>
+            <a href="https://instagram.com" target="_blank"><img class="imgHeader" src="../images/icons/instagram_icon.svg"></a>
+            <a href="https://linkedin.com" target="_blank"><img class="imgHeader" src="../images/icons/linkedin_icon.svg"></a>
+
+        </div>
+
+    </div>
+
+    <div class="footer-right">
+
+        <p>Contact</p>
+
+        <form action="#" method="post">
+
+            <input type="text" name="email" placeholder="Email">
+            <textarea name="message" placeholder="Message"></textarea>
+            <button>envoyer</button>
+
+        </form>
+
+    </div>
+
+</footer>
+</div>
+
+<div class="colonnes colonne3"></div>
+</div>
+
+
+	
+	
+</body>
+</html>
