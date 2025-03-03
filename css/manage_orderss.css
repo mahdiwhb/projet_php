@@ -1,0 +1,93 @@
+/* Style général de la page de gestion des commandes */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1E1E1E; /* Fond anthracite */
+  color: #F0E68C; /* Jaune pastel */
+  margin: 0;
+  padding: 0;
+}
+
+/* Conteneur principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #2C2C2C; /* Fond foncé */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre principal */
+h2 {
+  text-align: center;
+  font-size: 32px;
+  color: #D4AF37; /* Or */
+  margin-bottom: 20px;
+}
+
+/* Table de gestion des commandes */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: #252525; /* Noir intense */
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #D4AF37; /* Bordure dorée */
+}
+
+th {
+  background-color: #333; /* Gris foncé */
+  color: #D4AF37;
+}
+
+td {
+  background-color: #222; /* Fond légèrement plus clair que le body */
+}
+
+/* Sélecteur de statut */
+select {
+  background-color: #333;
+  color: #D4AF37;
+  padding: 5px;
+  border: 1px solid #D4AF37;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+/* Boutons d'action */
+button {
+  background-color: #D4AF37; /* Or */
+  color: #111;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #B88C2B; /* Doré foncé */
+  color: #fff;
+}
+
+a.back-btn {
+  display: inline-block;
+  background-color: #D4AF37;
+  color: #111;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+a.back-btn:hover {
+  background-color: #B88C2B;
+  color: white;
+}

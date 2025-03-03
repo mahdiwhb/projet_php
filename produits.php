@@ -17,6 +17,7 @@ try {
     die("Erreur de connexion : " . $e->getMessage());
 }
 
+// Récupérer toutes les catégories distinctes
 $sql_categories = "SELECT DISTINCT category FROM products ORDER BY category";
 $stmt = $pdo->prepare($sql_categories);
 $stmt->execute();
@@ -56,45 +57,46 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </nav>
 </header>
 
+<section class="produits">
+    <h1>💎 Notre Collection</h1>
+    <p class="description">Découvrez l’élégance intemporelle de la joaillerie française avec notre collection inspirée des grandes maisons de luxe.</p>
 
-    <section class="produits">
-        <h1>💎 Notre Collection</h1>
-        <p class="description">Découvrez l’élégance intemporelle de la joaillerie française avec notre collection inspirée des grandes maisons de luxe.</p>
+    <?php foreach ($categories as $cat): ?>
+        <div class="titre">
+            <center>
+                <h4><?= htmlspecialchars($cat['category']) ?></h4>
+            </center>
+        </div>
 
-        <?php foreach ($categories as $cat): ?>
-            <div class="titre">
-                <center>
-                    <h4><?= htmlspecialchars($cat['category']) ?></h4>
-                </center>
-            </div>
+        <section class="produits-container">
+            <?php
+            // Récupérer les produits de la catégorie actuelle
+            $sql = "SELECT id, name, description, price, image FROM products WHERE category = ?";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$cat['category']]);
+            $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            ?>
 
-            <section class="produits-container">
-                <?php
-                $sql = "SELECT id, name, description, price, image FROM products WHERE category = ?";
-                $stmt = $pdo->prepare($sql);
-                $stmt->execute([$cat['category']]);
-                $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                ?>
-
-                <?php foreach ($produits as $produit): ?>
-                    <div class="produit">
-                        <div class="photos">
-                            <img src="/images/?= htmlspecialchars($produit['image']) ?>" alt="<?= htmlspecialchars($produit['name']) ?>">
-                        </div>
-                        <h3><?= htmlspecialchars($produit['name']) ?></h3>
-                        <p><?= number_format($produit['price'], 2) ?> €</p>
-                        <div class="add">
-                            <a href="panier.php?ajout=<?= $produit['id'] ?>" class="btn">Ajouter au panier</a>
-                        </div>
+            <?php foreach ($produits as $produit): ?>
+                <div class="produit">
+                    <div class="photos">
+                        <img src="<?= htmlspecialchars($produit['image']) ?>" alt="<?= htmlspecialchars($produit['name']) ?>">
                     </div>
-                <?php endforeach; ?>
-            </section>
-        <?php endforeach; ?>
-    </section>
+                    <h3><?= htmlspecialchars($produit['name']) ?></h3>
+                    <p class="description"><?= htmlspecialchars($produit['description']) ?></p>
+                    <p class="price"><?= number_format($produit['price'], 2) ?> €</p>
+                    <div class="add">
+                        <a href="panier.php?ajout=<?= $produit['id'] ?>" class="btn">Ajouter au panier</a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </section>
+    <?php endforeach; ?>
+</section>
 
-    <footer>
-        <p>&copy; 2025 Éclat d'Or - Tous droits réservés.</p>
-    </footer>
+<footer>
+    <p>&copy; 2025 Éclat d'Or - Tous droits réservés.</p>
+</footer>
 
 </body>
 </html>

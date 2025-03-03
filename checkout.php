@@ -34,20 +34,21 @@
     <h2>Poursuivre la commande</h2>
     <p>Veuillez saisir vos informations de paiement pour finaliser votre commande.</p>
     <form action="process_payment.php" method="post" class="checkout-form">
-        <label for="card_name">Nom sur la carte</label>
-        <input type="text" id="card_name" name="card_name" required>
-        
-        <label for="card_number">Numéro de carte</label>
-        <input type="text" id="card_number" name="card_number" placeholder="1234 5678 9012 3456" required>
-        
-        <label for="expiry_date">Date d'expiration</label>
-        <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/AA" required>
-        
-        <label for="cvv">CVV</label>
-        <input type="text" id="cvv" name="cvv" placeholder="123" required>
-        
-        <button type="submit" class="btn">Confirmer l'achat</button>
-    </form>
+    <label for="card_name">Nom sur la carte</label>
+    <input type="text" id="card_name" name="card_name" required>
+
+    <label for="card_number">Numéro de carte</label>
+    <input type="text" id="card_number" name="card_number" placeholder="1234 5678 9012 3456" required>
+
+    <label for="expiry_date">Date d'expiration</label>
+    <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/AA" required>
+
+    <label for="cvv">CVV</label>
+    <input type="text" id="cvv" name="cvv" placeholder="123" required>
+
+    <button type="submit" class="btn">Confirmer l'achat</button>
+</form>
+
 </main>
 
 <footer>

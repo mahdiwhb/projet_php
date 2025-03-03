@@ -1,0 +1,64 @@
+/* Style général des boutons */
+.button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #b66040; /* Marron élégant */
+	border: none;
+	color: white;
+	padding: 10px 25px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: 0.3s;
+	font-weight: bold;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.button:hover {
+	background-color: #8f4d2c;
+	box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Style alternatif pour des boutons secondaires */
+.button1 {
+	background-color: #d4a300; /* Doré */
+	color: black;
+	border: 2px solid #d4a300;
+	transition: 0.3s;
+}
+
+.button1:hover {
+	background-color: #b68900;
+	color: white;
+}
+
+/* Style des liens sous forme de boutons */
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 8px 20px;
+	text-align: center;
+	text-decoration: none;
+	color: #ffcc00;
+	background: transparent;
+	font-size: 16px;
+	font-weight: bold;
+	border-radius: 8px;
+	transition: 0.3s;
+	border: 2px solid #ffcc00;
+}
+
+.btn:hover {
+	background-color: #ffcc00;
+	color: black;
+}
+
+.btnMenu {
+	margin-left: 20px;
+	padding: 8px 15px;
+	font-size: 14px;
+}

@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,7 +9,7 @@
 </head>
 <body>
   <!-- HEADER -->
-<header>
+  <header>
     <div class="header-container">
         <div class="logo">
             <img src="images/logo.png" alt="Logo Éclat d'Or">

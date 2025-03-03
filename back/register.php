@@ -1,76 +1,87 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="../css/register.css">
-    <link rel="stylesheet" type="text/css" href="../css/button.css">
-    <title>FORMULAIRE</title>
-</head>
-<body>
-    <div class="logo"><img src="../images/Logo_berbere.png" alt="Logo"></div>
+<?php
+session_start();
+require_once '../db.php';
 
-    <?php
-    $host = 'localhost';
-    $dbname = 'tp_web';
-    $username = 'root';
+$error = "";
+$success = "";
 
-    if(isset($_POST['insert'])){
+// Vérifier si le formulaire a été soumis
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $firstname = htmlspecialchars(trim($_POST['firstname']));
+    $lastname = htmlspecialchars(trim($_POST['lastname']));
+    $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+    $password = $_POST['password'];
+
+    if ($email && !empty($password)) {
         try {
-            $pdo = new PDO("mysql:host=$host;dbname=$dbname", "$username");
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $exc) {
-            echo $exc->getMessage();
-            exit();
-        }
+            // Vérifier si l'email existe déjà
+            $check_user = $pdo->prepare("SELECT id FROM users WHERE email = :email");
+            $check_user->execute(['email' => $email]);
 
-        // Sécurisation des entrées
-        $firstname = htmlspecialchars(trim($_POST['firstname']));
-        $lastname = htmlspecialchars(trim($_POST['lastname']));
-        $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
-        $login = htmlspecialchars(trim($_POST['login']));
-        $password = $_POST['pwd'];
-
-        if ($email) {
-            // Vérification de l'existence de l'email et du login
-            $check_user = $pdo->prepare("SELECT id FROM user WHERE EMAIL = :email OR LOGIN = :login");
-            $check_user->execute(['email' => $email, 'login' => $login]);
-            
             if ($check_user->rowCount() > 0) {
-                echo "<div class='form'><h3 class='titre'>L'email ou le login est déjà utilisé !</h3>
-                      <a href='javascript:history.back()' class='btn'>Retour</a></div>";
+                $error = "L'email est déjà utilisé !";
             } else {
                 // Hachage sécurisé du mot de passe
                 $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
                 // Insertion des données
-                $sql = "INSERT INTO `user`(`F_NAME`, `L_NAME`, `EMAIL`, `LOGIN`, `PASSWORD`) 
-                        VALUES (:firstname, :lastname, :email, :login, :password)";
-                $stmt = $pdo->prepare($sql);
+                $stmt = $pdo->prepare("INSERT INTO users (firstname, lastname, email, password) 
+                                       VALUES (:firstname, :lastname, :email, :password)");
                 $exec = $stmt->execute([
-                    ":firstname" => $firstname, 
-                    ":lastname" => $lastname, 
-                    ":email" => $email, 
-                    ":login" => $login, 
+                    ":firstname" => $firstname,
+                    ":lastname" => $lastname,
+                    ":email" => $email,
                     ":password" => $hashed_password
                 ]);
 
                 if ($exec) {
-                    echo "<div class='form'>
-                            <h1 class='titre'>Votre compte a été créé avec succès !</h1>
-                            <br><br>
-                            <a href='http://localhost/projet_PHP/index.php' class='btn'>Accueil</a>
-                            <a href='http://localhost/projet_PHP/html/login.html' class='btn btnMenu'>Se connecter</a>
-                          </div>";
+                    $success = "Votre compte a été créé avec succès !";
                 } else {
-                    echo "<div class='form'><h3 class='titre'>Échec de l'inscription.</h3><a href='javascript:history.back()' class='btn'>Retour</a></div>";
+                    $error = "Erreur lors de l'inscription.";
                 }
             }
-        } else {
-            echo "<div class='form'><h3 class='titre'>Email invalide.</h3><a href='javascript:history.back()' class='btn'>Retour</a></div>";
+        } catch (PDOException $e) {
+            $error = "Erreur de connexion à la base de données.";
         }
+    } else {
+        $error = "Email invalide ou mot de passe vide.";
     }
-    ?>
+}
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="/Projet_PHP/css/registerr.css">
+<link rel="stylesheet" href="/Projet_PHP/css/buttonn.css">
+
+</head>
+<body>
+
+    <div class="form">
+        <h3 class="titre">Inscription</h3>
+        
+        <?php if (!empty($error)): ?>
+            <p class="error-message"><?= htmlspecialchars($error) ?></p>
+        <?php endif; ?>
+
+        <?php if (!empty($success)): ?>
+            <p class="success-message"><?= htmlspecialchars($success) ?></p>
+            <a href="login.php" class="btn">Se connecter</a>
+        <?php else: ?>
+            <form action="register.php" method="POST">
+                <input type="text" name="firstname" placeholder="Prénom" required>
+                <input type="text" name="lastname" placeholder="Nom" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Mot de passe" required>
+                <button type="submit" class="btn">S'inscrire</button>
+            </form>
+            <a href="login.php" class="btn btnMenu">Déjà inscrit ? Se connecter</a>
+            <a href="javascript:history.back()" class="btn btnMenu">Retour</a>
+        <?php endif; ?>
+    </div>
 </body>
 </html>

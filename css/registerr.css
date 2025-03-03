@@ -1,0 +1,103 @@
+/* Réinitialisation des marges et du padding */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #3f1d14, #b66040);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Formulaire */
+.form {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid #fff;
+    width: 400px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+/* Titre */
+.titre {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Champs de saisie */
+.form input[type="text"], 
+.form input[type="number"], 
+.form input[type="email"], 
+.form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-bottom: 2px solid white;
+    background: transparent;
+    outline: none;
+    color: white;
+    font-size: 16px;
+}
+
+/* Effet de focus */
+.form input:focus {
+    border-bottom: 2px solid #ffcc00;
+}
+
+/* Bouton de validation */
+.valide {
+    margin-top: 20px;
+    width: 100%;
+    background: #ffcc00;
+    color: #3f1d14;
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.valide:hover {
+    background: #d4a300;
+}
+
+/* Bouton de retour */
+.btnMenu {
+    display: block;
+    margin-top: 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.btnMenu:hover {
+    background: white;
+    color: #3f1d14;
+}
+
+/* Messages d'erreur et de succès */
+.error-message {
+    color: #ff3b3b;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.success-message {
+    color: #00cc66;
+    font-size: 14px;
+    margin-bottom: 10px;
+}

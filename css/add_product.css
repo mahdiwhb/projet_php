@@ -1,0 +1,118 @@
+/* Réinitialisation */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Corps de la page */
+body {
+  background-color: #f5f5f5;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+/* Conteneur du formulaire */
+.admin-dashboard {
+  background: white;
+  width: 100%;
+  max-width: 500px;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Titre */
+h2 {
+  font-size: 2em;
+  color: rgb(30, 144, 255);
+  margin-bottom: 20px;
+}
+
+/* Formulaire */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Champs de formulaire */
+form label {
+  font-weight: bold;
+  text-align: left;
+  display: block;
+  margin-bottom: 5px;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border 0.3s;
+}
+
+/* Focus sur les champs */
+form input:focus,
+form textarea:focus {
+  border-color: rgb(30, 144, 255);
+  outline: none;
+}
+
+/* Bouton */
+.btn {
+  background-color: rgb(30, 144, 255);
+  color: white;
+  font-size: 16px;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+/* Effet au survol du bouton */
+.btn:hover {
+  background-color: rgb(0, 123, 200);
+  transform: scale(1.05);
+}
+
+/* Bouton retour */
+.back-btn {
+  display: inline-block;
+  margin-top: 15px;
+  background-color: #d4af37;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+/* Effet au survol du bouton retour */
+.back-btn:hover {
+  background-color: #b88c2b;
+}
+
+/* Message de succès et d'erreur */
+.success-message {
+  color: green;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
