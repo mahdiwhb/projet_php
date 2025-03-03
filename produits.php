@@ -1,12 +1,10 @@
 <?php
-// Activer l'affichage des erreurs pour le débogage
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
 
-// Connexion à la base de données
 $host = "localhost";
 $dbname = "tp_web"; 
 $username = "root"; 
@@ -19,7 +17,6 @@ try {
     die("Erreur de connexion : " . $e->getMessage());
 }
 
-// Récupérer toutes les catégories de produits
 $sql_categories = "SELECT DISTINCT category FROM products ORDER BY category";
 $stmt = $pdo->prepare($sql_categories);
 $stmt->execute();
@@ -47,7 +44,6 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <ul>
             <li><a href="index.php">Accueil</a></li>
             <li><a href="produits.php">Produits</a></li>
-            <li><a href="offres.php">Offres</a></li>
             <li><a href="about.php">Qui sommes-nous ?</a></li>
             <li><a href="contact.php">Contact</a></li>
             <li><a href="panier.php">Panier</a></li>

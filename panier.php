@@ -88,7 +88,6 @@ $total = 0;
         <ul>
             <li><a href="index.php">Accueil</a></li>
             <li><a href="produits.php">Produits</a></li>
-            <li><a href="offres.php">Offres</a></li>
             <li><a href="about.php">Qui sommes-nous ?</a></li>
             <li><a href="contact.php">Contact</a></li>
             <li><a href="panier.php">Panier</a></li>

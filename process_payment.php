@@ -1,24 +1,18 @@
 <?php
-// process_payment.php
-// Attention : ceci est une simulation et ne doit pas être utilisé en production.
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupération des données du formulaire
+
     $cardName    = $_POST['card_name']    ?? '';
     $cardNumber  = $_POST['card_number']  ?? '';
     $expiryDate  = $_POST['expiry_date']  ?? '';
     $cvv         = $_POST['cvv']          ?? '';
-
-    // Ici, on pourrait ajouter des vérifications (format, longueur, etc.)
-    // et simuler le traitement du paiement.
-    // En production, utilisez un service de paiement sécurisé (Stripe, PayPal, etc.)
     
-    // Simulation : on considère que le paiement est validé
-    $paymentStatus = true; // en simulation, toujours true
+    $paymentStatus = true; 
 
     if ($paymentStatus) {
-        // Affichage de la confirmation
-        ?>
+
+?>
         <!DOCTYPE html>
         <html lang="fr">
         <head>
@@ -39,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <li><a href="index.php">Accueil</a></li>
             <li><a href="produits.php">Produits</a></li>
             <li><a href="offres.php">Offres</a></li>
-            <li><a href="about.php">Qui sommes-nous ?</a></li>
             <li><a href="contact.php">Contact</a></li>
             <li><a href="panier.php">Panier</a></li>
             <?php if(isset($_SESSION['user_id'])): ?>
@@ -61,11 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </html>
         <?php
     } else {
-        // En cas d'erreur dans le traitement, rediriger ou afficher un message d'erreur
         echo "Une erreur est survenue lors du traitement du paiement.";
     }
 } else {
-    // Si la méthode n'est pas POST, rediriger vers la page d'accueil
     header("Location: index.php");
     exit;
 }

@@ -18,7 +18,6 @@
         <ul>
             <li><a href="index.php">Accueil</a></li>
             <li><a href="produits.php">Produits</a></li>
-            <li><a href="offres.php">Offres</a></li>
             <li><a href="about.php">Qui sommes-nous ?</a></li>
             <li><a href="contact.php">Contact</a></li>
             <li><a href="panier.php">Panier</a></li>
@@ -51,13 +50,13 @@
     <h2>Produits Populaires</h2>
     <div class="produits-container">
       <div class="produit">
-        <img src="images/produit1.jpg" alt="Produit 1">
-        <h3>Produit 1</h3>
+        <img src="images/colier en argent.jpg" alt="Produit 1">
+        <h3>Collier en Argent</h3>
         <p class="prix">€19.99</p>
       </div>
       <div class="produit">
-        <img src="images/produit2.jpg" alt="Produit 2">
-        <h3>Produit 2</h3>
+        <img src="images/braceletenor.jpg" alt="Produit 2">
+        <h3>Bracelet en Or</h3>
         <p class="prix">€29.99</p>
       </div>
       <!-- Ajoute d'autres produits si nécessaire -->
