@@ -1,0 +1,148 @@
+/* Réinitialisation de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    text-align: center;
+}
+
+/* HEADER */
+header {
+    background-color: rgb(0, 183, 255);
+    padding: 20px 0; /* Augmente le padding */
+    text-align: center;
+}
+
+/* Conteneur pour le logo et le titre */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Espacement entre le logo et le titre */
+    margin-bottom: 10px; /* Espace entre le titre et les boutons */
+}
+
+/* Style du logo */
+.logo img {
+    width: 80px;  /* Ajuste la taille */
+    height: 80px; /* Garde une forme carrée */
+    border-radius: 50%; /* Rend le logo circulaire */
+    object-fit: cover; /* Ajuste l'image */
+    border: 3px solid white; /* Ajoute une bordure */
+}
+
+/* NAVIGATION */
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 20px; /* Plus d'espace entre les boutons */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+nav ul li a:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* SECTION HERO */
+.hero {
+    padding: 100px 20px;
+    background: url('../images/hero.jpg') no-repeat center;
+    background-size: cover;
+    color: rgb(0, 0, 0);
+}
+
+.hero h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: black;
+    color: rgb(0, 183, 255);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* PRODUITS POPULAIRES */
+.produits-populaires {
+    margin: 50px 0;
+}
+
+.produits-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.produit {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+}
+
+.produit img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.produit h3 {
+    margin: 10px 0;
+}
+
+.produit .prix {
+    font-size: 1.2em;
+    color: green;
+    font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #222;
+    color: white;
+}
+
+.btn-auth {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.btn-auth:hover {
+    background: rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,150 @@
+/* Style global */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f3f4f6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #00b7ff, #0080cc);
+    color: #fff;
+    padding: 15px 0;
+}
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.logo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+nav ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+nav ul li a:hover {
+    color: #f9f9f9;
+}
+
+/* Main content */
+main {
+    max-width: 1100px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Titre et description */
+main h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #0080cc;
+}
+.empty-cart {
+    text-align: center;
+    font-size: 1.2em;
+    padding: 20px;
+}
+
+/* Table du panier */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+table thead th {
+    background-color: #f2f2f2;
+    padding: 12px;
+    border-bottom: 2px solid #ddd;
+}
+table tbody td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+.product-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+}
+.product-info img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+/* Inputs et boutons */
+input[type="number"] {
+    width: 60px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
+.btn, button {
+    background-color: #00b7ff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+.btn:hover, button:hover {
+    background-color: #0080cc;
+}
+.remove-btn {
+    background-color: #ff4d4d;
+}
+.remove-btn:hover {
+    background-color: #e60000;
+}
+
+/* Cart summary */
+.cart-summary {
+    text-align: right;
+    margin-top: 20px;
+}
+.cart-summary .total {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, #00b7ff, #0080cc);
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 30px;
+}

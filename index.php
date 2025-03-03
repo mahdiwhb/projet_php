@@ -1,20 +1,27 @@
 <?php
 // Activer l'affichage des erreurs pour le débogage
-error_reporting(E_ALL);
 ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-// Connexion à MySQL
-$servername = 'localhost';
-$username = 'root';
-$password = '';
-$dbname = 'tp_web';
+// Connexion à la base de données
+$host = "localhost";
+$dbname = "tp_web"; // Nom de la base de données
+$username = "root"; // Par défaut sur WAMP
+$password = ""; // Mot de passe vide sur WAMP
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Vérifier la connexion
-if ($conn->connect_error) {
-    die('Erreur de connexion : ' . $conn->connect_error);
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Erreur de connexion : " . $e->getMessage());
 }
+
+// Récupération des produits depuis la table `product`
+$sql = "SELECT id, name, description, price, image FROM products LIMIT 3"; // Sélectionne 3 produits
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -22,154 +29,60 @@ if ($conn->connect_error) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💎 Éclat d'Or</title>
-    <link rel="stylesheet" type="text/css" href="/Projet_PHP/css/style.css"> 
-    <link rel="stylesheet" type="text/css" href="/Projet_PHP/css/footer.css">
+    <title>Accueil - Éclat d'Or</title>
+    <link rel="stylesheet" href="css/style_index.css">
 </head>
 <body>
 
-<div class="Conteneur">
-    <div class="colonne1"></div>
-    <div class="colonne2">
-        <div class="container">
-            <div class="header">
-                <div class="logo">
-                    <a href="#"><img class="imgLogo" src="/Projet_PHP/images/logo.png"></a>
-                </div>
-                <div class="navbar">
-                    <ul>
-                        <li class="active"><a href="/Projet_PHP/index.php">Accueil</a></li>
-                        <li><a href="/Projet_PHP/html/products.html">Produits</a></li>   
-                        <li><a href="/Projet_PHP/html/offres.html">Offres</a></li>
-                        <li><a href="/Projet_PHP/html/about.html">Qui sommes-nous ?</a></li>
-                        <li><a href="/Projet_PHP/html/contacts.html">Contacts</a></li>
-                    </ul>
-                </div>
-            </div>
+<?php session_start(); ?>
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo Éclat d'Or">
         </div>
-
-        <!-- SLIDER -->
-        <div class="bodySlider">
-            <div class="slideshow-container">
-                <div class="mySlides fade">
-                    <img class="imgSlider" src="/Projet_PHP/images/slider/jpg/slider1.jpg">
-                </div>
-                <div class="mySlides fade">
-                    <img class="imgSlider" src="/Projet_PHP/images/slider/jpg/slider2.jpg">
-                </div>
-                <div class="mySlides fade">
-                    <img class="imgSlider" src="/Projet_PHP/images/slider/jpg/slider3.jpg">
-                </div>
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-            </div>
-        </div>
-
-        <!-- NOS ENGAGEMENTS -->
-        <section class="engagements">
-            <h2 class="section-title">✨ Nos engagements ✨</h2>
-            <div class="engagements-container">
-                <div class="engagement">
-                    <img src="/Projet_PHP/images/icons/quality.svg" alt="Qualité">
-                    <h3>Qualité premium</h3>
-                    <p>Des bijoux en or et argent 925, conçus avec passion.</p>
-                </div>
-                <div class="engagement">
-                    <img src="/Projet_PHP/images/icons/shipping.svg" alt="Livraison">
-                    <h3>Livraison rapide</h3>
-                    <p>Expédition sécurisée en 24/48h partout en France.</p>
-                </div>
-                <div class="engagement">
-                    <img src="/Projet_PHP/images/icons/secure.svg" alt="Paiement sécurisé">
-                    <h3>Paiement sécurisé</h3>
-                    <p>Transactions cryptées pour un achat en toute confiance.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- CATÉGORIES -->
-        <section class="categories">
-            <h2 class="section-title">Nos Collections</h2>
-            <div class="categories-container">
-                <div class="categorie">
-                    <img src="/Projet_PHP/images/categories/bague.jpg" alt="Bagues">
-                    <h3>Bagues</h3>
-                </div>
-                <div class="categorie">
-                    <img src="/Projet_PHP/images/categories/bracelet.jpg" alt="Bracelets">
-                    <h3>Bracelets</h3>
-                </div>
-                <div class="categorie">
-                    <img src="/Projet_PHP/images/categories/collier.jpg" alt="Colliers">
-                    <h3>Colliers</h3>
-                </div>
-            </div>
-        </section>
-
-        <!-- AVIS CLIENTS -->
-        <section class="avis">
-            <h2 class="section-title">💬 Nos clients en parlent 💬</h2>
-            <div class="avis-container">
-                <div class="avis-item">
-                    <p>⭐⭐⭐⭐⭐ "Magnifiques bijoux, livraison rapide et service client au top !"</p>
-                    <span>- Sophie L.</span>
-                </div>
-                <div class="avis-item">
-                    <p>⭐⭐⭐⭐⭐ "J'ai offert une bague, elle est encore plus belle en vrai !"</p>
-                    <span>- Thomas D.</span>
-                </div>
-                <div class="avis-item">
-                    <p>⭐⭐⭐⭐⭐ "Enfin une boutique de bijoux qui propose des modèles raffinés."</p>
-                    <span>- Camille M.</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- BOUTON COLLECTION -->
-        <div class="btn-center">
-            <a href="/Projet_PHP/html/products.html" class="btn btn-big">Découvrir notre collection</a>
-        </div>
-
-        <footer class="footer-distributed">
-            <div class="footer-left">
-                <h3>Éclat <span>D'or</span></h3>
-                <p class="footer-links">
-                    <a href="/Projet_PHP/index.php">Accueil</a> ·
-                    <a href="/Projet_PHP/html/products.html">Produits</a> ·
-                    <a href="/Projet_PHP/html/about.html">Qui sommes-nous ?</a> ·
-                    <a href="/Projet_PHP/html/contacts.html">Contact</a>
-                </p>
-            </div>
-        </footer>
+        <h1>Éclat d'Or</h1>
     </div>
-</div>
+    <nav>
+        <ul>
+            <li><a href="index.php">Accueil</a></li>
+            <li><a href="produits.php">Produits</a></li>
+            <li><a href="offres.php">Offres</a></li>
+            <li><a href="about.php">Qui sommes-nous ?</a></li>
+            <li><a href="contact.php">Contact</a></li>
+            <li><a href="panier.php">Panier</a></li>
+            <?php if(isset($_SESSION['user_id'])): ?>
+                <li><a href="logout.php" class="btn-auth">Se déconnecter</a></li>
+            <?php else: ?>
+                <li><a href="connexion.php" class="btn-auth">Inscription / Connexion</a></li>
+            <?php endif; ?>
+        </ul>
+    </nav>
+</header>
 
-<script>
-var slideIndex = 1;
-showSlides(slideIndex);
+    <section class="hero">
+        <h2>Bienvenue chez Éclat d'Or</h2>
+        <p>Découvrez nos bijoux élégants et raffinés.</p>
+        <a href="produits.php" class="btn">Voir nos collections</a>
+    </section>
 
-function plusSlides(n) {
-    showSlides(slideIndex += n);
-}
+    <section class="produits-populaires">
+        <h2>Nos Meilleurs Bijoux</h2>
+        <div class="produits-container">
+            <?php foreach ($produits as $produit): ?>
+                <div class="produits">
+                <img src="/images/?= htmlspecialchars($produit['image']) ?>" alt="<?= htmlspecialchars($produit['name']) ?>">
+                <h3><?= htmlspecialchars($produit['name']) ?></h3>
+                    <p><?= htmlspecialchars($produit['description']) ?></p>
+                    <p class="prix"><?= number_format($produit['price'], 2) ?> €</p>
+                    <a href="panier.php?ajout=<?= $produit['id'] ?>" class="btn">Ajouter au panier</a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </section>
 
-function currentSlide(n) {
-    showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-    var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("dot");
-
-    if (n > slides.length) {slideIndex = 1}    
-    if (n < 1) {slideIndex = slides.length}
-
-    for (var i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";  
-    }
-
-    slides[slideIndex-1].style.display = "block";  
-}
-</script>
+    <footer>
+        <p>&copy; 2025 Éclat d'Or - Tous droits réservés.</p>
+    </footer>
 
 </body>
 </html>
