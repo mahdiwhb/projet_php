@@ -1,63 +1,76 @@
 <?php
+session_start();
+require_once 'db.php';
 
+// Vérifier si l'utilisateur est connecté
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['error'] = "⛔ Vous devez être connecté pour passer une commande.";
+    header("Location: connexion.php");
+    exit();
+}
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+// Vérifier si le panier est vide
+if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
+    $_SESSION['error'] = "❌ Votre panier est vide.";
+    header("Location: panier.php");
+    exit();
+}
 
-    $cardName    = $_POST['card_name']    ?? '';
-    $cardNumber  = $_POST['card_number']  ?? '';
-    $expiryDate  = $_POST['expiry_date']  ?? '';
-    $cvv         = $_POST['cvv']          ?? '';
-    
-    $paymentStatus = true; 
+$user_id = $_SESSION['user_id'];
+$total = 0;
 
-    if ($paymentStatus) {
+// Récupérer les informations du paiement
+$cardName    = $_POST['card_name']    ?? '';
+$cardNumber  = $_POST['card_number']  ?? '';
+$expiryDate  = $_POST['expiry_date']  ?? '';
+$cvv         = $_POST['cvv']          ?? '';
 
-?>
-        <!DOCTYPE html>
-        <html lang="fr">
-        <head>
-            <meta charset="UTF-8">
-            <title>Paiement Validé - Éclat d'Or</title>
-            <link rel="stylesheet" href="css/style_checkout.css">
-        </head>
-        <body>
-        <header>
-    <div class="header-container">
-        <div class="logo">
-            <img src="images/logo.png" alt="Logo Éclat d'Or">
-        </div>
-        <h1>Éclat d'Or</h1>
-    </div>
-    <nav>
-        <ul>
-            <li><a href="index.php">Accueil</a></li>
-            <li><a href="produits.php">Produits</a></li>
-            <li><a href="offres.php">Offres</a></li>
-            <li><a href="contact.php">Contact</a></li>
-            <li><a href="panier.php">Panier</a></li>
-            <?php if(isset($_SESSION['user_id'])): ?>
-                <li><a href="logout.php" class="btn-auth">Se déconnecter</a></li>
-            <?php else: ?>
-                <li><a href="connexion.php" class="btn-auth">Inscription / Connexion</a></li>
-            <?php endif; ?>
-        </ul>
-    </nav>
-</header>
-        <main>
-            <h2>Paiement Validé</h2>
-            <p>Merci, votre commande a bien été prise en compte. (Simulation de paiement réussi.)</p>
-        </main>
-        <footer>
-            <p>&copy; 2025 Éclat d'Or - Tous droits réservés.</p>
-        </footer>
-        </body>
-        </html>
-        <?php
-    } else {
-        echo "Une erreur est survenue lors du traitement du paiement.";
+// Simulation de validation du paiement
+$paymentStatus = true; // Met à `false` si tu veux simuler un échec
+
+if ($paymentStatus) {
+    try {
+        // Calcul du total de la commande
+        foreach ($_SESSION['cart'] as $item) {
+            $total += $item['price'] * $item['quantity'];
+        }
+
+        // Insérer la commande dans `orders`
+        $stmt = $pdo->prepare("INSERT INTO orders (user_id, total, status) VALUES (:user_id, :total, 'Payée')");
+        $stmt->execute([
+            ':user_id' => $user_id,
+            ':total' => $total
+        ]);
+
+        // Récupérer l'ID de la dernière commande
+        $order_id = $pdo->lastInsertId();
+
+        // Insérer chaque produit dans `items`
+        $stmt = $pdo->prepare("INSERT INTO items (order_id, product_id, quantity, price) VALUES (:order_id, :product_id, :quantity, :price)");
+        foreach ($_SESSION['cart'] as $item) {
+            $stmt->execute([
+                ':order_id' => $order_id,
+                ':product_id' => $item['id'],
+                ':quantity' => $item['quantity'],
+                ':price' => $item['price']
+            ]);
+        }
+
+        // Vider le panier après validation
+        unset($_SESSION['cart']);
+
+        // Rediriger vers la confirmation
+        $_SESSION['success'] = "✅ Votre commande a été passée avec succès !";
+        header("Location: confirmation.php");
+        exit();
+    } catch (Exception $e) {
+        $_SESSION['error'] = "❌ Erreur lors de l'enregistrement de la commande.";
+        header("Location: panier.php");
+        exit();
     }
 } else {
-    header("Location: index.php");
-    exit;
+    $_SESSION['error'] = "❌ Erreur lors du paiement.";
+    header("Location: panier.php");
+    exit();
 }
 ?>

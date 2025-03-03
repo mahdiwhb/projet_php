@@ -10,13 +10,19 @@ body {
     background-color: #f5f5f5;
     color: #333;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* HEADER */
 header {
-    background-color: rgb(30, 144, 255);
+    background-color: rgb(0, 183, 255);
     padding: 20px 0;
-    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .header-container {
@@ -39,16 +45,17 @@ header {
 nav ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    justify-content: center;
 }
 
 nav ul li {
-    display: inline;
     margin: 0 15px;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: white;
+    color: rgb(0, 0, 0);
     font-weight: bold;
     font-size: 18px;
     padding: 10px 15px;
@@ -67,24 +74,23 @@ nav ul li a:hover {
 
 /* SECTION PRODUITS */
 .produits {
-    width: 80%;
+    width: 90%;
+    max-width: 1200px;
     margin: 40px auto;
     background: white;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    text-align: left;
+    text-align: center;
 }
 
 .produits h1 {
     font-size: 2.5em;
-    text-align: center;
     margin-bottom: 20px;
     color: rgb(30, 144, 255);
 }
 
 .description {
-    text-align: center;
     font-size: 1.2em;
     margin-bottom: 20px;
     color: #555;
@@ -100,10 +106,10 @@ nav ul li a:hover {
 
 /* AFFICHAGE DES PRODUITS */
 .produits-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 20px;
     margin-top: 20px;
 }
 
@@ -169,10 +175,13 @@ nav ul li a:hover {
     transform: scale(1.05);
 }
 
+/* FOOTER */
 footer {
+    width: 100%;
     margin-top: 40px;
     padding: 15px;
     background-color: #222;
     color: white;
     font-size: 14px;
+    text-align: center;
 }

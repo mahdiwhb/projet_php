@@ -1,17 +1,28 @@
 <?php
 session_start();
-require_once '../db.php';
+require_once '../db.php'; // Assure-toi que ce fichier existe et contient la connexion PDO
 
+// Vérification si l'utilisateur est connecté et admin
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     header("Location: ../back/login.php");
     exit();
 }
 
-$stmt = $conn->query("SELECT orders.id, users.name AS user_name, orders.total_price, orders.status 
-                      FROM orders 
-                      JOIN users ON orders.user_id = users.id
-                      ORDER BY orders.created_at DESC");
-$orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// Vérification que la connexion à la base de données existe
+if (!isset($pdo)) {
+    die("❌ Erreur : Connexion à la base de données non trouvée.");
+}
+
+// Récupération des commandes
+try {
+    $stmt = $pdo->query("SELECT orders.id, users.firstname, users.lastname, orders.total, orders.status, orders.created_at 
+                         FROM orders 
+                         JOIN users ON orders.user_id = users.id 
+                         ORDER BY orders.created_at DESC");
+    $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (Exception $e) {
+    die("❌ Erreur SQL : " . $e->getMessage());
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,43 +30,52 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion des commandes</title>
-    <link rel="stylesheet" href="../css/manage_orders.css">
+    <title>Gestion des Commandes</title>
+    <link rel="stylesheet" href="../css/manage_orderss.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Gestion des commandes</h2>
-        <table>
+
+<div class="admin-dashboard">
+    <h2>📦 Gestion des Commandes</h2>
+
+    <table>
+        <thead>
             <tr>
                 <th>ID</th>
                 <th>Client</th>
-                <th>Total</th>
+                <th>Total (€)</th>
                 <th>Statut</th>
-                <th>Action</th>
+                <th>Date</th>
+                <th>Actions</th>
             </tr>
+        </thead>
+        <tbody>
             <?php foreach ($orders as $order): ?>
-            <tr>
-                <td><?= $order['id']; ?></td>
-                <td><?= htmlspecialchars($order['user_name']); ?></td>
-                <td><?= $order['total_price']; ?>€</td>
-                <td><?= $order['status']; ?></td>
-                <td>
-                    <!-- Pour modifier le statut de la commande -->
-                    <form method="POST">
-                        <input type="hidden" name="order_id" value="<?= $order['id']; ?>">
-                        <select name="status">
-                            <option value="pending" <?= $order['status'] == 'pending' ? 'selected' : ''; ?>>En attente</option>
-                            <option value="paid" <?= $order['status'] == 'paid' ? 'selected' : ''; ?>>Payé</option>
-                            <option value="shipped" <?= $order['status'] == 'shipped' ? 'selected' : ''; ?>>Expédié</option>
-                        </select>
-                        <button type="submit" name="update_status">Modifier</button>
-                    </form>
-                </td>
-            </tr>
+                <tr>
+                    <td><?= htmlspecialchars($order['id']); ?></td>
+                    <td><?= htmlspecialchars($order['firstname'] . ' ' . $order['lastname']); ?></td>
+                    <td><?= number_format($order['total'], 2); ?> €</td>
+                    <td><?= htmlspecialchars($order['status']); ?></td>
+                    <td><?= htmlspecialchars($order['created_at']); ?></td>
+                    <td>
+                        <form action="update_order.php" method="POST">
+                            <input type="hidden" name="id" value="<?= $order['id']; ?>">
+                            <select name="status">
+                                <option value="En attente" <?= ($order['status'] == "En attente") ? "selected" : ""; ?>>En attente</option>
+                                <option value="Payée" <?= ($order['status'] == "Payée") ? "selected" : ""; ?>>Payée</option>
+                                <option value="Expédiée" <?= ($order['status'] == "Expédiée") ? "selected" : ""; ?>>Expédiée</option>
+                                <option value="Annulée" <?= ($order['status'] == "Annulée") ? "selected" : ""; ?>>Annulée</option>
+                            </select>
+                            <button type="submit">Mettre à jour</button>
+                        </form>
+                    </td>
+                </tr>
             <?php endforeach; ?>
-        </table>
-        <br>
-        <a href="dashboard.php" class="back-btn">Retour au tableau de bord</a>
-    </div>
+        </tbody>
+    </table>
+
+    <a href="dashboard.php" class="back-btn">Retour au tableau de bord</a>
+</div>
+
 </body>
 </html>

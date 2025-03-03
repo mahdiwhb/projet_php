@@ -58,7 +58,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </header>
 
 <section class="produits">
-    <h1>💎 Notre Collection</h1>
+    <h1>💎 Nos Produits</h1>
     <p class="description">Découvrez l’élégance intemporelle de la joaillerie française avec notre collection inspirée des grandes maisons de luxe.</p>
 
     <?php foreach ($categories as $cat): ?>
