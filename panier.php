@@ -100,6 +100,7 @@ $total = 0;
         </ul>
     </nav>
 </header>
+
 <main>
     <h2>Votre Panier</h2>
     <?php if (empty($cart)): ?>
@@ -120,11 +121,11 @@ $total = 0;
                     <?php foreach ($cart as $item): 
                         $subtotal = $item['price'] * $item['quantity'];
                         $total += $subtotal;
+                        // Construction du chemin de l'image avec une valeur par défaut
                         $imgSrc = "images/" . htmlspecialchars($item['image'] ?? "default.jpg");
                     ?>
                     <tr>
                         <td class="product-info">
-                            <!-- Debug: Chemin de l'image généré : <?= $imgSrc ?> -->
                             <img src="<?= $imgSrc ?>" alt="<?= htmlspecialchars($item['name'] ?? 'Produit') ?>" width="50">
                             <?= htmlspecialchars($item['name'] ?? 'Produit') ?>
                         </td>
@@ -145,6 +146,10 @@ $total = 0;
                 <button type="submit" name="update" class="btn update-btn">Mettre à jour le panier</button>
             </div>
         </form>
+        <!-- Bouton pour poursuivre la commande -->
+        <div class="checkout-button" style="text-align: right; margin-top: 20px;">
+            <a href="checkout.php" class="btn checkout-btn">Poursuivre la commande</a>
+        </div>
     <?php endif; ?>
 </main>
 <footer>

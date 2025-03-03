@@ -9,7 +9,6 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f3f4f6;
     color: #333;
-    line-height: 1.6;
 }
 
 /* HEADER */
@@ -35,7 +34,6 @@ header {
     border: 3px solid white;
 }
 
-/* Navigation */
 nav ul {
     list-style: none;
     padding: 0;
@@ -62,110 +60,53 @@ nav ul li a:hover {
 
 /* MAIN */
 main {
-    max-width: 1100px;
+    max-width: 800px;
     margin: 30px auto;
     background: #fff;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
 }
 
 main h2 {
-    text-align: center;
     margin-bottom: 20px;
     font-size: 2em;
     color: #0080cc;
 }
 
-/* Message pour panier vide */
-.empty-cart {
-    text-align: center;
-    font-size: 1.2em;
-    padding: 20px;
-}
-
-/* Formulaire et tableau du panier */
-.cart-form table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-.cart-form thead th {
-    background-color: #f2f2f2;
-    padding: 12px;
-    border-bottom: 2px solid #ddd;
-    text-align: left;
-}
-
-.cart-form tbody td {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
-    text-align: center;
-}
-
-.cart-form tbody tr:hover {
-    background-color: #f9f9f9;
-}
-
-/* Infos produit dans le tableau */
-.product-info {
+/* FORMULAIRE CHECKOUT */
+.checkout-form {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column;
+    gap: 15px;
     text-align: left;
 }
 
-.product-info img {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+.checkout-form label {
+    font-weight: bold;
 }
 
-/* Input quantité */
-input[type="number"] {
-    width: 60px;
-    padding: 6px;
+.checkout-form input[type="text"] {
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    text-align: center;
+    width: 100%;
 }
 
-/* Boutons */
-.btn, button {
+.checkout-form .btn {
     background-color: #00b7ff;
     color: #fff;
     border: none;
-    padding: 10px 15px;
+    padding: 10px;
     border-radius: 4px;
     cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s;
+    font-size: 16px;
+    transition: background 0.3s;
 }
 
-.btn:hover, button:hover {
+.checkout-form .btn:hover {
     background-color: #0080cc;
-}
-
-.remove-btn {
-    background-color: #ff4d4d;
-}
-
-.remove-btn:hover {
-    background-color: #e60000;
-}
-
-/* Résumé du panier */
-.cart-summary {
-    text-align: right;
-    margin-top: 20px;
-}
-
-.cart-summary .total {
-    font-size: 1.4em;
-    margin-bottom: 10px;
 }
 
 /* FOOTER */
